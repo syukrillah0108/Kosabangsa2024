@@ -1,0 +1,113 @@
+<mxfile host="65bd71144e">
+    <diagram id="ySa-466JTiWgdu0O6x1B" name="Page-1">
+        <mxGraphModel dx="1284" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="36" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;strokeWidth=3;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="40" width="820" height="690" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;fillColor=#e1d5e7;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="521.25" width="780" height="97.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;fillColor=#fff2cc;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="401.25" width="780" height="97.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;fillColor=#d5e8d4;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="278" width="780" height="97.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;fillColor=#dae8fc;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="156.25" width="780" height="97.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="2" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Bahan Baku" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="120" y="305" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1" parent="1" source="3" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="270"/>
+                            <mxPoint x="380" y="270"/>
+                            <mxPoint x="440" y="270"/>
+                            <mxPoint x="440" y="450"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Campur" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="270" y="175" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=none;html=1;fontSize=14;strokeWidth=3;fontStyle=1" parent="1" source="4" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Air" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="150" y="180" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="5" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="CMC / Karagenan" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="255" y="70" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="8" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Haluskan" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="270" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="11" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Campur" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="270" y="420" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="13" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Glycelor" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="425" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="15" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Minyak" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="140" y="545" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="16" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Garam" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="440" y="545" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="edgeStyle=none;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" source="17" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Gula" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="285" y="650" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Campur" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=3;fontSize=14;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="270" y="540" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Campurkan &lt;b&gt;Air&lt;/b&gt; dengan &lt;b&gt;CMC&lt;/b&gt;, jika tidak ada CMC bisa menggunakanan &lt;b&gt;Karagenan&lt;/b&gt; denga takaran yang sama" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="166.56" width="380.71" height="76.87" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="&lt;b&gt;Bahan Baku&lt;/b&gt; di cuci, kukus 3-5 menit, di peras,&lt;br&gt;di haluskan menggunakan chopper" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="288.32" width="380.71" height="76.87" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Campurkan dari bahan sebelumnya dengan &lt;b&gt;Bahan Baku&lt;/b&gt; yang sudah di &lt;b&gt;haluskan&lt;/b&gt; dan tambahkan &lt;b&gt;Glycelor&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="411.56" width="380.71" height="76.87" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Campurkan bahan sebelumnya dengan&lt;br&gt;&lt;b&gt;Minyak, Gula, Garam dan Gula.&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fontSize=14;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="531.56" width="300.71" height="76.87" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Proses Pembuatan Nori" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#2D7600;fillColor=#60a917;fontSize=32;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="450.00000000000006" y="80" width="380" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="kosabangsa 2024" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=22;fontStyle=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="660" width="210" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
