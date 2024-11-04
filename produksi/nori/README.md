@@ -11,7 +11,7 @@
 | Minyak Goreng    | 2%     |
 
 # Kalkulator
-[![YouTube](https://img.shields.io/badge/Kalkulator-Takaran-blue)](https://web-host-80c44.web.app/)
+[![Kalkulator](https://img.shields.io/badge/Kalkulator-Takaran-blue)](https://web-host-80c44.web.app/)
 
 
 # Proses Pembuatan
