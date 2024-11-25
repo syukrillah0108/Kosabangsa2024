@@ -1,97 +1,110 @@
-/* 
- *  This library was written by Vittorio Esposito
- *    https://github.com/VittorioEsposito
- *
- *  Designed to work with the GSM Sim800L.
- *
- *  ENG
- *    This library uses SoftwareSerial, you can define RX and TX pins
- *    in the header "Sim800L.h", by default pins are RX=10 and TX=11.
- *    Be sure that GND is connected to arduino too. 
- *    You can also change the RESET_PIN as you prefer.
- *  
- *  ESP
- *    Esta libreria usa SoftwareSerial, se pueden cambiar los pines de RX y TX
- *    en el archivo header, "Sim800L.h", por defecto los pines vienen configurado en
- *    RX=10 TX=11.  
- *    Tambien se puede cambiar el RESET_PIN por otro que prefiera
- * 
- *  ITA
- *    Questa libreria utilizza la SoftwareSerial, si possono cambiare i pin di RX e TX
- *    dall' intestazione "Sim800L.h", di default essi sono impostati come RX=10 RX=11
- *    Assicurarsi di aver collegato il dispositivo al pin GND di Arduino.
- *    E' anche possibile cambiare il RESET_PIN.
- *
- *
- *   DEFAULT PINOUT: 
- *        _____________________________
- *       |  ARDUINO UNO >>>   Sim800L  |
- *        -----------------------------
- *            GND      >>>   GND
- *        RX  10       >>>   TX    
- *        TX  11       >>>   RX
- *       RESET 2       >>>   RST 
- *                 
- *   POWER SOURCE 4.2V >>> VCC
- *
- *
- *  SOFTWARE SERIAL NOTES:
- *
- *    PINOUT
- *    The library has the following known limitations:
- *    1. If using multiple software serial ports, only one can receive data at a time.
- *    2. Not all pins on the Mega and Mega 2560 support change interrupts, so only the following can be used for RX: 10, 11, 12, 13, 14, 15, 50, 51, 52, 53, A8 (62), A9 (63), A10 (64), A11 (65), A12 (66), A13 (67), A14 (68), A15 (69).
- *    3. Not all pins on the Leonardo and Micro support change interrupts, so only the following can be used for RX: 8, 9, 10, 11, 14 (MISO), 15 (SCK), 16 (MOSI).
- *    4. On Arduino or Genuino 101 the current maximum RX speed is 57600bps
- *    5. On Arduino or Genuino 101 RX doesn't work on Pin 13
- *  
- *    BAUD RATE
- *    Supported baud rates are 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 31250, 38400, 57600, and 115200.
- *
- *
- *  Edited on:  December 24, 2016
- *    Editor:   Vittorio Esposito
- *    
- *  Original version by:   Cristian Steib
- *        
- *
-*/
-#include <Arduino.h>
-#include <Sim800L.h>
-#include <SoftwareSerial.h>               
+#include <WiFi.h>
+#include <WiFiClientSecure.h>
+#include <UniversalTelegramBot.h>
 
-#define RX  10
-#define TX  11
+// ====== Konfigurasi WiFi ======
+const char* ssid = "realme C25s";
+const char* password = "code787898";
 
-Sim800L GSM(RX, TX);
+// ====== Konfigurasi Telegram Bot ======
+#define BOT_TOKEN "7679786493:AAGuYqA8evAvANNHvMIydReW0aPGWP4ICSQ" // Ganti dengan Bot Token kamu
+WiFiClientSecure client;
+UniversalTelegramBot bot(BOT_TOKEN, client);
 
-/*
- * In alternative:
- * Sim800L GSM;                       // Use default pinout
- * Sim800L GSM(RX, TX, RESET);        
- * Sim800L GSM(RX, TX, RESET, LED);
- */
+// Variabel untuk memeriksa update bot
+unsigned long lastTimeBotRan;
+const long botInterval = 1000; // Interval 1 detik
 
-int day,month,year,minute,second,hour;
+// LED pin
+const int ledPin = 2; // Pin LED (biasanya built-in LED ada di pin 2)
 
-void setup(){
-  Serial.begin(9600); 
-  GSM.begin(9600);   
+// Fungsi untuk menyambungkan ke WiFi
+void connectWiFi() {
+  Serial.print("Menyambungkan ke WiFi ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("\nTerhubung ke WiFi!");
+  Serial.print("IP Address: ");
+  Serial.println(WiFi.localIP());
 }
 
-void loop(){
-	GSM.RTCtime(&day,&month,&year,&hour,&minute,&second);
-	//NOW the variables have the real time. 
-	Serial.print(day);
-	Serial.print('/');
-	Serial.print(month);
-	Serial.print('/');
-	Serial.print(year);
-	Serial.print(' ');
-	Serial.print(hour);
-	Serial.print(':');
-	Serial.print(minute);
-	Serial.print(':');
-	Serial.print(second);
-	Serial.println();
+// Fungsi untuk menangani perintah Telegram
+void handleNewMessages(int numNewMessages) {
+  Serial.println("Pesan baru diterima:");
+
+  for (int i = 0; i < numNewMessages; i++) {
+    String chat_id = bot.messages[i].chat_id;
+    String text = bot.messages[i].text;
+    String from_name = bot.messages[i].from_name;
+
+    if (from_name == "") from_name = "User";
+
+    Serial.print("Pesan dari ");
+    Serial.print(from_name);
+    Serial.print(": ");
+    Serial.println(text);
+
+    // Respon terhadap perintah
+    if (text == "/start") {
+      String welcome = "Halo, " + from_name + "!\n";
+      welcome += "Ini adalah ESP32 Telegram Bot.\n\n";
+      welcome += "Ketik /led_on untuk menyalakan LED.\n";
+      welcome += "Ketik /led_off untuk mematikan LED.";
+      bot.sendMessage(chat_id, welcome, "");
+    }
+
+    // Perintah untuk menyalakan LED
+    if (text == "/led_on") {
+      digitalWrite(ledPin, HIGH);
+      bot.sendMessage(chat_id, "LED dinyalakan!", "");
+    }
+
+    // Perintah untuk mematikan LED
+    if (text == "/led_off") {
+      digitalWrite(ledPin, LOW);
+      bot.sendMessage(chat_id, "LED dimatikan!", "");
+    }
+
+    // Respon default jika perintah tidak dikenali
+    if (text != "/start" && text != "/led_on" && text != "/led_off") {
+      bot.sendMessage(chat_id, "Perintah tidak dikenali!", "");
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  // Konfigurasi pin LED sebagai output
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
+
+  // Menghubungkan ke WiFi
+  connectWiFi();
+
+  // Mengatur client untuk koneksi yang aman
+  client.setInsecure(); // Untuk melewati sertifikat SSL (tidak disarankan di aplikasi nyata)
+}
+
+void loop() {
+  if (WiFi.status() == WL_CONNECTED) {
+    // Memeriksa update bot secara berkala
+    if (millis() > lastTimeBotRan + botInterval) {
+      int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+      while (numNewMessages) {
+        handleNewMessages(numNewMessages);
+        numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+      }
+      lastTimeBotRan = millis();
+    }
+  } else {
+    // Jika WiFi terputus, coba hubungkan kembali
+    connectWiFi();
+  }
 }

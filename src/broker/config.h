@@ -18,6 +18,10 @@ const char* mqtt_topic_hum3 = "/dht/lembap3";
 const char* mqtt_topic_relay1 = "/relay/1";
 const char* mqtt_topic_relay2 = "/relay/2";
 
+const char* topic1 = "esp32/suhu";
+const char* topic2 = "esp32/kelembaban";
+const char* topic3 = "esp32/status";
+
 WiFiClient espClient;
 PubSubClient client(espClient);
 
@@ -36,29 +40,35 @@ IPAddress local_IP(192, 168, 96, 100);        // Alamat IP statis untuk ESP32
 IPAddress gateway(192, 168, 1, 1);          // IP router
 IPAddress subnet(255, 255, 255, 0);         // Subnet mask
 
-void setup_wifi() {
-    delay(10);
-    Serial.println();
-    Serial.print("Connecting to ");
+// Deklarasi Handle Task
+TaskHandle_t WiFiCheckTaskHandle = NULL;
+
+void connectToWiFi() {
+    Serial.print("Menghubungkan ke Wi-Fi ");
     Serial.println(ssid);
+    /*
     if (!WiFi.config(local_IP, gateway, subnet)) {
         Serial.println("Failed to configure Static IP");
     }
+    */
     WiFi.begin(ssid, password);
-        while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
 
+    // Menunggu hingga koneksi berhasil
+    while (WiFi.status() != WL_CONNECTED) {
+        Serial.print(".");
+        vTaskDelay(500 / portTICK_PERIOD_MS); // Delay 500 ms
+    }
+    Serial.println("\nTerhubung ke Wi-Fi!");
+    Serial.print("IP Address: ");
     Serial.println(WiFi.localIP());
-    Serial.println("WiFi connected");
 }
+
 
 TaskHandle_t MQTTBrokerTask;
 void brokerUpdateTask(void *parameter) {
     while (true) {
         broker.update();
-        vTaskDelay(1);
+        vTaskDelay(100/portTICK_PERIOD_MS);
     }
 }
 
