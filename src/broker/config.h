@@ -2,8 +2,8 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "realme C25s";
-const char* password = "code787898";
+const char* ssid = "OSYARA";
+const char* password = "omg12345";
 
 const char* mqtt_server = "localhost";
 
@@ -36,10 +36,6 @@ void setup_client(){
     client.setServer(mqtt_server, mqttPort);
 }
 
-IPAddress local_IP(192, 168, 96, 100);        // Alamat IP statis untuk ESP32
-IPAddress gateway(192, 168, 1, 1);          // IP router
-IPAddress subnet(255, 255, 255, 0);         // Subnet mask
-
 // Deklarasi Handle Task
 TaskHandle_t WiFiCheckTaskHandle = NULL;
 
@@ -61,6 +57,8 @@ void connectToWiFi() {
     Serial.println("\nTerhubung ke Wi-Fi!");
     Serial.print("IP Address: ");
     Serial.println(WiFi.localIP());
+    Serial.print("MAC Address: ");
+    Serial.println(WiFi.macAddress());
 }
 
 

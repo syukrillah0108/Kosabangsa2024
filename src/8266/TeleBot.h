@@ -15,17 +15,6 @@ const long interval = 10000;      // Interval 10 detik (dalam milidetik)
 
 #define CHATID1 "6762920775"
 #define CHATID2 "1312129748"
-int kalibrasi = 70;
-String valuePart;
-
-bool isNumeric(String str) {
-  for (unsigned int i = 0; i < str.length(); i++) {
-    if (!isDigit(str[i])) {
-      return false;
-    }
-  }
-  return true;
-}
 
 void handleNewMessages(int numNewMessages){
     Serial.println("Pesan baru diterima:");
@@ -66,21 +55,8 @@ void handleNewMessages(int numNewMessages){
                 msg += String(Hum3);
                 msg += " %\n";
 
-                msg += "\nKalibrasi\n";
-                msg += "    Relay: ";
-                msg += String(kalibrasi);
-
                 msg += "\n\nKetik /start untuk membuka menu.";
-                msg += "\n\nKetik set:<nilai> untuk mengubah kalibrasi.";
                 bot.sendMessage(chat_id, msg, "");
-            }else if(text_msg.startsWith("set:")){
-                valuePart = text_msg.substring(4);
-                if(isNumeric(valuePart)){
-                    kalibrasi = valuePart.toInt();
-                    bot.sendMessage(chat_id, "Kalibrasi Berhasil di Ubah", "");
-                }else{
-                    bot.sendMessage(chat_id, "Format salah", "");
-                }
             }
         }
         msg.clear();

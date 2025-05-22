@@ -1,9 +1,9 @@
 #include "DHT.h"
 
-#define DHT1 15//16 //Umum
-#define DHT3 4//17 //Nori
+#define DHT1 D1//16 //Umum
+#define DHT3 D2//17 //Nori
 
-#define RELAY1 25//26
+#define RELAY1 D8//26
 
 #define DHTTYPE DHT21
 DHT dht1(DHT1, DHTTYPE);
